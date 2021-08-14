@@ -2,14 +2,16 @@
 
 ## users テーブル
 
-| Column                               | Type   | Options     |
-| ------------------------------------ | ------ | ----------- |
-| email                                | string | null: false |
-| encrypted_password                   | string | null: false |
-| nickname                             | string | null: false |
-| name                                 | string | null: false |
-| namecanat                            | string | null: false |
-| birthday                             | string | null: false |
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| last  name         | string | null: false |
+| first name         | string | null: false |
+| last name_canat    | string | null: false |
+| first name_canat   | string | null: false |
+| birthday           | date   | null: false |
 
 ### Association
 
@@ -18,15 +20,17 @@
 
 ## items テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| image         | string     | null: false                    |
-| title         | text       | null: false                    |
-| text          | text       | null: false                    |
-| detail        | text       | null: false                    |
-| delivery      | text       | null: false                    |
-| price         | text       | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column                    | Type       | Options                        |
+| ------------------------- | ---------- | ------------------------------ |
+| title                     | text       | null: false                    |
+| text                      | text       | null: false                    |
+| category_id               | integer    | null: false                    |
+| detail_id                 | integer    | null: false                    |
+| delivery price_id         | integer    | null: false                    |
+| area_id                   | integer    | null: false                    |
+| day_id                    | integer    | null: false                    |
+| price                     | integer    | null: false                    |
+| user                      | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -36,7 +40,7 @@
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| text        | string     | null: false                    |
+| text        | text       | null: false                    |
 | user        | references | null: false, foreign_key: true |
 | item        | references | null: false, foreign_key: true |
 
@@ -47,10 +51,16 @@
 
 ##  addresses テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| item          | references | null: false, foreign_key: true |
-| record        | references | null: false, foreign_key: true |
+| Column                   | Type       | Options                        |
+| ------------------------ | ---------- | ------------------------------ |
+| postal code              | string     | null: false                    |
+| Prefecture_id            | integer    | null: false                    |
+| municipality             | string     | null: false                    |
+| house number             | string     | null: false                    |
+| building name            | string     | null: false                    |
+| telephone number         | string     | null: false                    |
+| item                     | references | null: false, foreign_key: true |
+| record                   | references | null: false, foreign_key: true |
 
 ### Association
 
