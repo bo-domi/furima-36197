@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| last_name         | string | null: false |
-| first_name         | string | null: false |
-| last_name_canat    | string | null: false |
-| first_name_canat   | string | null: false |
-| birthday           | date   | null: false |
+| Column             | Type   | Options                  |
+| ------------------ | ------ | ------------------------ |
+| nickname           | string | null: false              |
+| email              | string | unique: true             |
+| encrypted_password | string | null: false              |
+| last_name          | string | null: false              |
+| first_name         | string | null: false              |
+| last_name_canat    | string | null: false              |
+| first_name_canat   | string | null: false              |
+| birthday           | date   | null: false              |
 
 ### Association
 
@@ -22,7 +22,7 @@
 
 | Column                    | Type       | Options                        |
 | ------------------------- | ---------- | ------------------------------ |
-| title                     | text       | null: false                    |
+| title                     | string     | null: false                    |
 | text                      | text       | null: false                    |
 | category_id               | integer    | null: false                    |
 | detail_id                 | integer    | null: false                    |
@@ -35,6 +35,7 @@
 ### Association
 
 - has_one :record
+- belongs_to :user
 
 ##  records テーブル
 
@@ -47,7 +48,7 @@
 
 - belongs_to :item
 - has_one :address
-- has_many :users
+- belongs_to :user
 
 ##  addresses テーブル
 
@@ -59,7 +60,6 @@
 | house_number             | string     | null: false                    |
 | building_name            | string     |                                |
 | telephone_number         | string     | null: false                    |
-| item                     | references | null: false, foreign_key: true |
 | record                   | references | null: false, foreign_key: true |
 
 ### Association
