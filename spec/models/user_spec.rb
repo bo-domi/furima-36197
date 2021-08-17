@@ -5,6 +5,11 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー新規登録' do
+    it '全ての情報がある場合登録できる' do
+      expect(@user).to be_valid
+    end
+    
+    
     it 'nicknameが空では登録できない' do
       @user.nickname = ''
       @user.valid?
@@ -116,5 +121,12 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include ("First name canat 全角（カタカナ）で入力してください")
     end
+
+    it '誕生日が空では登録できない' do
+      @user.birthday = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include ("Birthday can't be blank")
+    end
+
 end
 end
