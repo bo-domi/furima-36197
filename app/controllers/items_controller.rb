@@ -10,13 +10,13 @@ class ItemsController < ApplicationController
   end
 
   def create
-  @item = Item.new(item_params)
-  if @item.save
-    redirect_to action: "show"
-  else
-    render :index
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
-end
 
   def destroy
     item = Item.find(params[:id])
@@ -34,10 +34,8 @@ end
 
 private
 
-def itme_params
-  params.require(:item).permit(:content, :image).merge(user_id: current_user.id)
-
-
-end
+  def item_params
+    params.require(:item).permit(:image, :title, :text, :category_id, :detail_id, :delivery_price_id, :day_id, :price, :area_id).merge(user_id: current_user.id)
+  end
 
 end
