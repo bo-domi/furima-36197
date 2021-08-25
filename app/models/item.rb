@@ -19,6 +19,7 @@ class Item < ApplicationRecord
     validates :area
     validates :day
     validates :price
+    validates :user_id
   end
 
 end

@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-   @items = Item.all
+   #@items = Item.all
   end
 
   def new
@@ -18,18 +18,18 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy
+  #def destroy
     item = Item.find(params[:id])
     item.destroy
-  end
+  #end
 
-  def edit
+  #def edit
 
-  end
+  #end
 
-  def show
+  #def show
 
-  end
+ #end
 
 
 private

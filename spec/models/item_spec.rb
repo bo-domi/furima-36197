@@ -64,6 +64,13 @@ context '商品登録ができない時' do
     @item.valid?
     expect(@item.errors.full_messages).to include ("Price can't be blank")
   end
+
+  it 'ユーザーがログインしていないと登録できない' do
+    @item.user_id = ''
+    @item.valid?
+    expect(@item.errors.full_messages).to include ("User can't be blank")
+
+  end
 end
 end
 
