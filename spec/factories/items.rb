@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    id                         {'1'}
+
     title                      {'aaa'}
     text                       {'bbbbbbbbb'}
     category_id                   {2}
@@ -11,7 +11,7 @@ FactoryBot.define do
     price                      {300}
     created_at                      {'2021-08-23 06:06:36.080398'}
     updated_at                      {'2021-08-23 06:06:36.116979'}
-   
+    
     association :user
 
     after(:build) do |item|
