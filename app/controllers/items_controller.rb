@@ -20,10 +20,15 @@ class ItemsController < ApplicationController
     end
   end
 
-  #def destroy
-   # @item = Item.find(params[:id])
-    #@item.destroy
-  #end
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+      if @item.destroy
+        redirect_to action: "index"
+       else
+        render :show
+       end
+  end
 
   def edit
   end
