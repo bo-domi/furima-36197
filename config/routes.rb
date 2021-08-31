@@ -4,5 +4,10 @@ Rails.application.routes.draw do
   root to: 'items#index'
   resources :items, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
   end
+
+  resources :items do
+    resources :records, only: :create
+  end
+
   #get 'items/search'
 end
