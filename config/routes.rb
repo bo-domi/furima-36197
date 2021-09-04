@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :items do
-    resources :records, only: :create
+    resources :records, only: [:create, :index]
   end
 
   #get 'items/search'

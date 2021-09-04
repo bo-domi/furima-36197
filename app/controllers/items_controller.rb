@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    # @record = Record.all
   end
 
    def update
