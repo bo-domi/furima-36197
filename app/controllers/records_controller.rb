@@ -2,15 +2,17 @@ class RecordsController < ApplicationController
 
   def index
     @record_address = RecordAddress.new
+    @item = Item.find(params[:item_id])
   end
   
   def create
-    @record_address = RecordAddress.create(record_params)
+    @item = Item.find(params[:item_id])
+    @record_address = RecordAddress.new(record_params)
     if @record_address.valid?
       @record_address.save
-      redirect_to root_path
+      redirect_to item_path(@record_address.item.id)
     else
-      render :new
+      render "records/index"
     end
   end
   
