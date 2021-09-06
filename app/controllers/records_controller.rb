@@ -10,7 +10,7 @@ class RecordsController < ApplicationController
     @record_address = RecordAddress.new(record_params)
     if @record_address.valid?
       @record_address.save
-      redirect_to item_path(@record_address.item.id)
+      redirect_to root_path
     else
       render "records/index"
     end
