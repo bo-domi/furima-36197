@@ -65,5 +65,11 @@ end
       @record_address.valid?
       expect(@record_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
   end
+
+     it 'tokenが空では購入できない' do
+      @record_address.token = ''
+      @record_address.valid?
+    expect(@record_address.errors.full_messages).to include ("Token can't be blank")
+  end
 end
 end
