@@ -9,6 +9,5 @@ FactoryBot.define do
     first_name            {'太郎'}
     last_name_canat       {'ヤマダ'}
     first_name_canat      {'タロウ'}
-    id                     {1}
   end
 end
