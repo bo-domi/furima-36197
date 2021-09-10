@@ -2,11 +2,19 @@ require 'rails_helper'
 
 RSpec.describe RecordAddress, type: :model do
   before do
-    @record_address = FactoryBot.build(:record_address)
+    user = FactoryBot.create(:user, email: 'test@test')
+    item = FactoryBot.create(:item)
+    @record_address = FactoryBot.build(:record_address, user_id: user.id, item_id: item.id)
+    sleep 0.1
 end
 
   context '購入ができる時' do
     it '全ての情報がある場合購入できる' do
+      expect(@record_address).to be_valid
+    end
+
+    it '建物が空の場合でも登録できる' do
+      @record_address.building_name = ''
       expect(@record_address).to be_valid
     end
   end
@@ -70,6 +78,36 @@ end
       @record_address.token = ''
       @record_address.valid?
     expect(@record_address.errors.full_messages).to include ("Token can't be blank")
+  end
+
+  it 'area_idが未選択だと購入できない' do
+    @record_address.area_id = 1
+    @record_address.valid?
+    expect(@record_address.errors.full_messages).to include ("Area Select")
+  end
+
+  it 'telephone_numberが全角であれば購入できない' do
+    @record_address.telephone_number = '１１１１１１１１１１１'
+    @record_address.valid?
+    expect(@record_address.errors.full_messages).to include("Telephone number is invalid")
+  end
+
+  it 'telephone_numberが英字が含まれていると購入できない' do
+    @record_address.telephone_number = '1111aaaaaaa'
+    @record_address.valid?
+    expect(@record_address.errors.full_messages).to include("Telephone number is invalid")
+  end
+
+  it 'userが紐付いていないと購入できない' do
+    @record_address.user_id = nil
+    @record_address.valid?
+    expect(@record_address.errors.full_messages).to include("User can't be blank")
+  end
+
+it 'itemが紐付いていないと購入できない' do
+    @record_address.item_id = nil
+    @record_address.valid?
+    expect(@record_address.errors.full_messages).to include("Item can't be blank")
   end
 end
 end

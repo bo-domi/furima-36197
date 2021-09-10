@@ -11,7 +11,7 @@ class RecordAddress
    validates :municipality 
    validates :house_number 
    validates :telephone_number, format: {with: /\A\d{10,11}\z/ }
-   validates :token, presence: true
+   validates :token
  end
 
  def save

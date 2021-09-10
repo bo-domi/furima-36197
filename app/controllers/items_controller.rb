@@ -29,10 +29,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item.record.present?
+      redirect_to root_path
+     end
   end
 
   def show
-    # @record = Record.all
+    
   end
 
    def update
