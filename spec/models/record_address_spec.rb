@@ -65,13 +65,13 @@ end
     it 'postal_codeが3桁ハイフン4桁以外では購入できない' do
       @record_address.postal_code = '333344'
       @record_address.valid?
-      expect(@record_address.errors.full_messages).to include ("Postal code is invalid. Include hyphen(-)")
+      expect(@record_address.errors.full_messages).to include ("Postal code is invalid. Please enter in single-byte number. Include hyphen(-)")
     end
 
     it 'postal_codeが全角数字だと購入できない' do
-      @record_address.postal_code = '１１１−１１１１'
+      @record_address.postal_code = '１１１-１１１１'
       @record_address.valid?
-      expect(@record_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      expect(@record_address.errors.full_messages).to include("Postal code is invalid. Please enter in single-byte number. Include hyphen(-)")
   end
 
      it 'tokenが空では購入できない' do
