@@ -13,12 +13,12 @@ class Item < ApplicationRecord
     validates :image
     validates :title
     validates :text
-    validates :user_id
+    validates :user
   end
 
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
-  with_options presence: true, numericality: { only_integer: true, other_than: 1, message: "can't be blank"} do
+  with_options presence: true, numericality: { only_integer: true, other_than: 1} do
     validates :category_id
     validates :detail_id
     validates :delivery_price_id
