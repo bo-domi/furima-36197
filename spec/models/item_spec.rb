@@ -12,7 +12,7 @@ end
 
 context '商品登録ができない時' do
   it '画像が空では登録できない' do
-    @item.image = nil
+    @item.images = nil
     @item.valid?
     expect(@item.errors.full_messages).to include ("画像を入力してください")
   end
